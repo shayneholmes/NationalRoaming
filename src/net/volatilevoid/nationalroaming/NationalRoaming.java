@@ -60,7 +60,8 @@ public class NationalRoaming implements IXposedHookLoadPackage {
 
                         String net = newSS.getOperatorNumeric();
 
-                        if (sim.substring(0, 3).equals(net.substring(0, 3)))
+                        if (sim.substring(0, 3).equals(net.substring(0, 3))
+                                || (sim.substring(0, 3).equals("311") && net.substring(0, 3).equals("310"))) // special case: Lyca on T-mo
                             newSS.setRoaming(false); // MCC is the same - we're at home
                     }
                 }
